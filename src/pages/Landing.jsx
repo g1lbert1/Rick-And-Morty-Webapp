@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 const Landing = () => {
   const [loading, setLoading] = useState(true)
   const [characters, setCharacters] = useState(undefined)
@@ -20,9 +21,20 @@ const Landing = () => {
     return <div>Loading...</div>
   }else{
     return (
-      <div className='App'>
+      <div className="bg-gray-200 min-h-screen flex flex-col items-center justify-center">
+        <h1>Welcome!</h1>
+        <p>This is the Rick and Morty WebApp! It utilizes the Rick and Morty API to display characters, locations, and episodes. Check it out!!</p>
+        <p>Browse:</p>
         <ul>
-          {characters && characters.map((character) => <li key={character.id}>{character.name}</li>)}
+          <li>
+            <Link to="/characters/page/1">Characters</Link>
+          </li>
+          <li>
+            <Link to="/locations/page/1">Locations</Link>
+          </li>
+          <li>
+            <Link to="/episodes/page/1">Episodes</Link>
+          </li>
         </ul>
       </div>
     )
